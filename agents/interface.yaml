@@ -1,0 +1,90 @@
+# xiaoyang-fusion 接口契约
+name: xiaoyang-fusion
+version: "2.0"
+
+interface:
+  display_name: 李岳阳融合视角
+  short_description: 注册会计师+律师+毛选博弈+5000年人性洞察——技术正确不等于政治可行，成交第一步不是专业而是信任。
+  default_prompt: 请以李岳阳融合视角（注册会计师+律师+毛选博弈+人性洞察）分析该客户的财税状况，先看局再看账，出具一份有血有肉、有步骤有说辞的方案。
+
+triggers:
+  primary:
+    - 融合视角
+    - 小阳出方案
+    - 看局再看账
+    - 客户方案
+    - 谈单方案
+    - 出方案
+  secondary:
+    - 专业分析
+    - 纯技术
+    - 看人
+    - 人性
+    - 给老板怎么说
+
+inputs:
+  required:
+    - client_profile: "客户基本信息（行业/营收/规模）"
+    - task_type: "任务类型（交付/销售/专业分析）"
+  optional:
+    - financial_data: "科目余额表/序时账/申报表"
+    - contract: "服务合同"
+    - payment_receipt: "转账回单"
+    - existing_reports: "已有方案/自查说明"
+
+outputs:
+  - type: report
+    format: "问题反馈-{公司名称}.md"
+    description: "轻量财税诊断报告，5-7个核心风险"
+  - type: proposal
+    format: "客户方案.md"
+    description: "有血有肉的客户方案（融合版）"
+  - type: word_doc
+    format: ".docx"
+    description: "正式Word文档（按用户要求）"
+
+compatibility:
+  canonical_format: yaohub-1.0
+  adapter_targets:
+    - hermes
+    - claude-code
+    - codex
+  activation:
+    mode: trigger_match
+  execution:
+    context: inline
+    shell: bash
+  trust:
+    source_tier: local
+    remote_inline_execution: forbid
+    remote_metadata_policy: drop
+  degradation:
+    hermes:
+      adaptations: []
+      notes: ""
+    claude-code:
+      adaptations: []
+      notes: ""
+    codex:
+      adaptations: []
+      notes: ""
+
+boundaries:
+  do_not_touch:
+    - "两账合一（前3-6个月不谈）"
+    - "历史体外项目（除非客户主动提起）"
+    - "社保基数调整（第一次不谈）"
+    - "挂靠清理（第1次座谈不谈）"
+  default_tax_rate: "小微企业5%所得税+六税两费减半"
+  forbidden_words:
+    - "破产"
+    - "资不抵债"
+    - "倒闭"
+
+references:
+  - references/client-profile.md
+  - references/five-step-method.md
+  - references/six-pulses.md
+  - references/industry-risk-matrix.md
+  - references/report-checklist.md
+  - references/commander-handbook.md

@@ -1,0 +1,22 @@
+{
+  "name": "xiaoyang-fusion",
+  "version": "2.0.0",
+  "description": "李岳阳融合视角——注册会计师+律师+毛选博弈+5000年人性洞察。核心哲学：技术正确不等于政治可行，成交第一步不是专业而是信任。",
+  "author": "李岳阳",
+  "owner": "李岳阳",
+  "license": "MIT",
+  "status": "active",
+  "lifecycle_stage": "production",
+  "maturity_tier": "production",
+  "review_cadence": "quarterly",
+  "updated_at": "2026-06-19",
+  "governance": {
+    "owner": "李岳阳",
+    "last_reviewed": "2026-06-19"
+  },
+  "tags": ["财税", "融合视角", "客户方案", "谈单", "合规"],
+  "compatibility": {
+    "agents": ["hermes", "claude-code", "codex"],
+    "min_hermes_version": "1.0.0"
+  }
+}
